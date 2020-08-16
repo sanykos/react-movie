@@ -1,4 +1,4 @@
-import {SEARCH_MOVIE} from '../actions/actionTypes'
+import {PUT_DATA} from '../actions/actionTypes'
 
 const initialState = {
     data: []
@@ -6,10 +6,11 @@ const initialState = {
 
 export default function searchReducer(state = initialState, action) {
     switch(action.type) {
-        case SEARCH_MOVIE: {
+        case PUT_DATA: {
+           // console.log(action.payload)
             return {
                 ...state,
-                data: action.data
+                data: action.payload
             }
         }
         default: 

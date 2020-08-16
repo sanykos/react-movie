@@ -1,10 +1,16 @@
-import {takeEvery} from 'redux-saga/effects'
-import {SEARCH_MOVIE} from './actions/actionTypes'
+import { takeEverym, put, call } from 'redux-saga/effects'
+import { SEARCH_MOVIE } from './actions/actionTypes'
+import { putData } from './actions/search'
+import axios from 'axios'
 
-
+function searchData() {
+    return axios.get('http://www.omdbapi.com/?apikey=87203ed4&s=Batman')
+    .then(response => response.data.Search)
+}
 
 export default function* workerSearchData() {
-    console.log('It is working')
+    const data = yield call(searchData)
+    yield put(putData(data))
 }
 
 export function* watchSearchData() {
