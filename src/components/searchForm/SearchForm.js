@@ -17,10 +17,13 @@ const SearchForm = ({search, data}) => {
           root: theme
         },
     }));
+    const onChangeHandler = (e) => {
+        search(e.target.value)
+    }
     const classes = useStyles();
-    console.log(data)
-//   const dispatch = useDispatch()
-//     const onClickHandler = () => dispatch(search())
+    //console.log(search)
+
+
   
     return(
         <div className={classes.root}>
@@ -34,6 +37,7 @@ const SearchForm = ({search, data}) => {
                         </IconButton>
                     </InputAdornment>}
                     labelWidth={60}
+                    onChange={onChangeHandler}
                 />
             </FormControl>
         </div>
@@ -42,15 +46,16 @@ const SearchForm = ({search, data}) => {
 
 function mapDispatchToProps(dispatch) {
     return  {
-        search: () => dispatch(search())
+        search: (searchText) => dispatch(search(searchText))
     }
 }
 
-function mapStateToProps(state) {
-    const {search} = state 
-    return {
-        data: search.data
-    }
-}
+// function mapStateToProps(state) {
+//   //console.log(state)
+//     const {search} = state 
+//     return {
+//         data: search.data
+//     }
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchForm)
+export default connect(null, mapDispatchToProps)(SearchForm)

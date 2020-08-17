@@ -1,9 +1,10 @@
-import axios from '../../axios/axios-swagger'
 import {SEARCH_MOVIE, PUT_DATA} from './actionTypes'
 
-export const search = () => {
+export const search = (searchText) => {
+    //console.log(searchText)
     return {
         type: SEARCH_MOVIE,
+        payload: searchText
     }
 }
 

@@ -6,14 +6,14 @@ import {Provider} from 'react-redux'
 import createSagaMiddleware from 'redux-saga'
 import logger from 'redux-logger'
 import rootReducer from './store/reducers/rootReducer'
-import watchSearchData from './store/sagas'
+import { rootSaga } from './store/saga'
 import App from './components/App';
 
 
 const sagaMiddleware = createSagaMiddleware()
-const store = createStore(rootReducer, applyMiddleware(logger, sagaMiddleware))
-sagaMiddleware.run(watchSearchData)
-
+const store = createStore(rootReducer, applyMiddleware(sagaMiddleware))
+sagaMiddleware.run(rootSaga)
+//console.log(store.getState())
 const app = (
     <BrowserRouter>
         <Provider store={store}>
