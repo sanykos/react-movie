@@ -1,5 +1,5 @@
-import React from 'react'
-import {useDispatch, connect} from 'react-redux'
+import React, {useState} from 'react'
+import {connect} from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles'
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import InputLabel from '@material-ui/core/InputLabel'
@@ -11,19 +11,20 @@ import {search} from '../../store/actions/search'
 
 
 
-const SearchForm = ({search, data}) => {
+const SearchForm = ({search}) => {
+
     const useStyles = makeStyles((theme) => ({
         root: {
           root: theme
         },
     }));
-    const onChangeHandler = (e) => {
-        search(e.target.value)
-    }
     const classes = useStyles();
-    //console.log(search)
 
-
+    const [value, setValue] = useState('')
+    const onChangeHandler = (e) => {
+        setValue(e.target.value)
+    }
+    
   
     return(
         <div className={classes.root}>
@@ -32,7 +33,7 @@ const SearchForm = ({search, data}) => {
                 <OutlinedInput
                     id="outlined-adornment-amount"
                     startAdornment={<InputAdornment position="end">
-                        <IconButton onClick={search}>
+                        <IconButton onClick={() => search(value)}>
                             <Search/>
                         </IconButton>
                     </InputAdornment>}
@@ -50,12 +51,5 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
-// function mapStateToProps(state) {
-//   //console.log(state)
-//     const {search} = state 
-//     return {
-//         data: search.data
-//     }
-// }
 
 export default connect(null, mapDispatchToProps)(SearchForm)

@@ -9,19 +9,18 @@ function searchData(searchText) {
 }
 
 export  function* workerSearchData(action) {
-   yield console.log(action)
-    // try {
-    //   //  console.log(action)
-    //     const data = yield call(searchData)
-    //    // console.log(data)
-    //     yield put(putData(data))
-    // } catch(e) {
-    //     console.log(e)
-    // }
+    if(action) {
+        try {
+            const data = yield call(searchData, action.payload)
+            yield put(putData(data))
+        }catch(e) {
+            console.log(e)
+        }
+     }
 }
 
 export function* watchSearchData() {
-   yield takeLatest(SEARCH_MOVIE, workerSearchData)
+   yield takeEvery(SEARCH_MOVIE, workerSearchData)
 }
 
 export function* searchMoviesSaga() {
