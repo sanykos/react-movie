@@ -24,8 +24,13 @@ const SearchForm = ({search}) => {
     const onChangeHandler = (e) => {
         setValue(e.target.value)
     }
+
+    const handleEnter = (e) => {
+        if(e.key === 'Enter') {
+            search(value)
+        }
+    }
     
-  
     return(
         <div className={classes.root}>
             <FormControl fullWidth className={classes.margin} variant="outlined">
@@ -39,6 +44,7 @@ const SearchForm = ({search}) => {
                     </InputAdornment>}
                     labelWidth={60}
                     onChange={onChangeHandler}
+                    onKeyPress={handleEnter}
                 />
             </FormControl>
         </div>

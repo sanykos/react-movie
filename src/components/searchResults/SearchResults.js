@@ -21,12 +21,13 @@ const SearchResults = ({data}) => {
             margin: '15px'
         },
         media: {
-          height: 140,
+          height: 400,
+          backgroundPosition: 'top center'
         },
       });
     const classes = useStyles();
 
-    console.log(data);
+   // console.log(data);
     return (
         <div className={classes.root}>
             {
@@ -54,8 +55,6 @@ const SearchResults = ({data}) => {
 
 
 function mapStateToProps(state){
-   //console.log(state)
-   //return state
   const {search} = state
     return {
        data: search.data
