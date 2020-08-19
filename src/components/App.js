@@ -1,18 +1,21 @@
 import React, {Component} from 'react';
-import Container from '@material-ui/core/Container';
+import { Route, Redirect } from 'react-router-dom';
+import Home from './Home/Home'
+import Movie from './Movie/Movie'
 
-import SearchForm from './searchForm/SearchForm'
-import SearchResults from './searchResults/SearchResults'
 
 
 
 class App extends Component {
     render() {
+        
         return(
-            <Container fixed>
-                <SearchForm />
-                <SearchResults />
-            </Container>
+            <React.Fragment>
+                <Route exact path="/" component={Home} />
+                <Route exact path="/movie/:id" component={Movie} />
+                <Redirect to="/" />
+            </React.Fragment>
+            
         )
     }
 }

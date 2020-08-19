@@ -1,2 +1,4 @@
 export const SEARCH_MOVIE = "SEARCH_MOVIE"
 export const PUT_DATA = "PUT_DATA"
+export const DETAIL_MOVIE = "DETAIL_MOVIE"
+export const DETAIL_MOVIE_RECEIVED = "DETAIL_MOVIE_RECEIVED"

@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles';
+import { Link } from 'react-router-dom'
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card'
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -26,8 +27,6 @@ const SearchResults = ({data}) => {
         },
       });
     const classes = useStyles();
-
-
     return (
         <div className={classes.root}>
             {
@@ -41,7 +40,9 @@ const SearchResults = ({data}) => {
                             title="Contemplative Reptile"
                         />
                         <CardContent>
-                            <p>{item.Title}</p>
+                          <Link to={'/movie/'+item.imdbID}>
+                            {item.Title}
+                          </Link>
                         </CardContent>
                     </CardActionArea>
                 </ Card> 
@@ -52,7 +53,6 @@ const SearchResults = ({data}) => {
 
     )
   }
-
 
 function mapStateToProps(state){
   const {search} = state
