@@ -13,10 +13,14 @@ class Movie extends React.Component {
     }
 
     render() {
-        //console.log(this.props.movie)
+        const { movie } = this.props
+        //console.log(movie)
+       // console.log(this.props.movie)
         return(
             <Container fixed>
-               <h1>Movie</h1>
+                <img src={movie.Poster} alt=""/>
+                <h1>{movie.Title}</h1>
+                <p>{movie.Plot}</p>
             </Container>
         )
     }
