@@ -27,11 +27,11 @@ const SearchResults = ({data}) => {
       });
     const classes = useStyles();
 
-   // console.log(data);
+
     return (
         <div className={classes.root}>
             {
-                data.length ?
+                typeof data !== 'undefined' ?
                 data.map((item, key) => (
                 <Card key={key} className={classes.card}>
                     <CardActionArea>
